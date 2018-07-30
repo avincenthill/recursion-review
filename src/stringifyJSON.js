@@ -13,49 +13,49 @@ var stringifyJSON = function(obj) {
 
   //handle null
   if (obj === null) {
-    return "null";
+    return 'null';
   }
 
   //handle objects
-  if (typeof obj === "object") {
+  if (typeof obj === 'object') {
     let array = [];
     let keys = Object.keys(obj);
     if (!keys) {
-      return "{}";
+      return '{}';
     }
     for (let key in obj) {
-      if (obj[key] === undefined || typeof obj[key] === "function") {
+      if (obj[key] === undefined || typeof obj[key] === 'function') {
         continue;
       }
       let keyValue = '"' + key + '":' + stringifyJSON(obj[key]);
       array.push(keyValue);
     }
 
-    result = "{" + array + "}";
+    result = '{' + array + '}';
   }
 
   //handle arrays
   if (Array.isArray(obj)) {
     let array = [];
     if (!obj.length) {
-      return "[]";
+      return '[]';
     }
     for (let i = 0; i < obj.length; i++) {
       array.push(stringifyJSON(obj[i]));
     }
-    result = "[" + array + "]";
+    result = '[' + array + ']';
   }
 
   //iterate through array and add each element to result array
 
   //handle strings
-  if (typeof obj === "string") {
+  if (typeof obj === 'string') {
     result = '"' + obj + '"';
   }
 
   //handle values
   if (!result) {
-    result = obj + "";
+    result = obj + '';
   }
 
   return result;

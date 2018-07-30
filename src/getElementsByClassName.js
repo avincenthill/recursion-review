@@ -5,7 +5,6 @@
 
 // But instead we're going to implement it from scratch:
 var getElementsByClassName = function(className) {
-
   //You should use document.body, element.childNodes, and element.classList
   //inner function of test node
   //I: className string
@@ -14,32 +13,19 @@ var getElementsByClassName = function(className) {
   //E: watch for multiple classnames per element
 
   let results = [];
-  let testNodes = (node) => {
-
+  let testNodes = node => {
     if (node && node.classList.contains(className)) {
-      results.push(node)
+      results.push(node);
 
       if (Array.from(node.childNodes).length > 0) {
-        for (let i=0; i<Array.from(node.childNodes).length; i++) {
+        for (let i = 0; i < Array.from(node.childNodes).length; i++) {
           testNodes(node[i]);
         }
       }
-
-      
     }
-
-    
-
-  }
+  };
 
   testNodes(document.body);
 
   return results;
-
-
-
-
-
-
-
 };
