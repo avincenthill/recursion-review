@@ -5,4 +5,5 @@
 
 var stringifyJSON = function(obj) {
   // your code goes here
+  // TBD do this first
 };
