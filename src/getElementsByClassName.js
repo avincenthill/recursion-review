@@ -14,18 +14,15 @@ var getElementsByClassName = function(className) {
 
   let results = [];
   let testNodes = node => {
-    if (node && node.classList.contains(className)) {
+    if (node.classList && node.classList.contains(className)) {
       results.push(node);
-
-      if (Array.from(node.childNodes).length > 0) {
-        for (let i = 0; i < Array.from(node.childNodes).length; i++) {
-          testNodes(node[i]);
-        }
+    }
+    if (node.hasChildNodes()) {
+      for (let i = 0; i < Array.from(node.childNodes).length; i++) {
+        testNodes(Array.from(node.childNodes)[i]);
       }
     }
   };
-
   testNodes(document.body);
-
   return results;
 };
