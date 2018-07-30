@@ -18,14 +18,20 @@ var stringifyJSON = function(obj) {
 
   //handle objects
   if (typeof obj === "object") {
-    let object = {};
-    if (!Object.keys(obj)) {
+    let array = [];
+    let keys = Object.keys(obj);
+    if (!keys) {
       return "{}";
     }
-    // for (let i=0; i<obj.length; i++) {
-    //   array.push(stringifyJSON(obj[i]));
-    // }
-    // result = "[" + array + "]";
+    for (let key in obj) {
+      if (obj[key] === undefined|| typeof obj[key] === "function") {
+        continue
+      }
+      let keyValue = '"' + key + '":' + stringifyJSON(obj[key]);
+      array.push(keyValue)
+    }
+    
+    result = "{" + array + "}";
   }
 
   //handle arrays
