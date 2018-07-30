@@ -18,6 +18,7 @@ var getElementsByClassName = function(className) {
       results.push(node);
     }
     if (node.hasChildNodes()) {
+      //use Array.from(array).foreach here
       for (let i = 0; i < Array.from(node.childNodes).length; i++) {
         testNodes(Array.from(node.childNodes)[i]);
       }

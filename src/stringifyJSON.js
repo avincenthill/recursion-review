@@ -40,6 +40,9 @@ var stringifyJSON = function(obj) {
     if (!obj.length) {
       return '[]';
     }
+
+    //refactor with array.map
+    //use array functions instead of for loops
     for (let i = 0; i < obj.length; i++) {
       array.push(stringifyJSON(obj[i]));
     }
